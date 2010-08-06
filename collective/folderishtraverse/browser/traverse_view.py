@@ -11,7 +11,8 @@ class TraverseView(BrowserView):
 
     @property
     def anonymous(self):
-        # TODO: is there a plone view global var for that?
+        # TODO: you may better get this info from:
+        #       plone.app.layout.globals.portal.PortalState.anonymous
         return getSecurityManager().getUser().getUserName() == 'Anonymous User'
 
     def __call__(self, *args, **kwargs):
