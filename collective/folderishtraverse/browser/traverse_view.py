@@ -19,7 +19,7 @@ class TraverseView(BrowserView):
         #       see adm.sfd.layout.browser.portlets.navigation.navtree_builder
         if IFolder.providedBy(self.context) and self.anonymous:
             if len(self.context.contentIds()):
-                # TODO: make configurable if listing is reversed!
+                # TODO: reversing the listing must be configurable!
                 obj = self.context.contentIds()[-1]
                 url = self.context[obj].absolute_url()
                 return self.request.response.redirect(url)
