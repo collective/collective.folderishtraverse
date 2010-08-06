@@ -15,7 +15,7 @@ class TraverseView(BrowserView):
         return getSecurityManager().getUser().getUserName() == 'Anonymous User'
 
     def __call__(self, *args, **kwargs):
-        # TODO: only traverse to objects which are listet in typestolist.
+        # TODO: only traverse to objects which are listed in typestolist.
         #       see adm.sfd.layout.browser.portlets.navigation.navtree_builder
         if IFolder.providedBy(self.context) and self.anonymous:
             if len(self.context.contentIds()):
