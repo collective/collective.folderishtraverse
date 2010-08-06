@@ -5,14 +5,33 @@
 from Products.Five.browser import BrowserView
 from plone.folder.interfaces import IFolder
 
+from AccessControl import getSecurityManager
+
 class TraverseView(BrowserView):
 
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        import pdb;pdb.set_trace()
-        if IFolder.providedBy(self.context):
-            return self.request.response
+
+        if not self.__name__ == context.defaultView():
+            return
+
+    @property
+    def anonymous(self):
+        # TODO: is there a plone view global var for that?
+        return getSecurityManager().getUser().getUserName() == 'Anonymous User'
 
     def __call__(self, *args, **kwargs):
-        return u''
+        # TODO: only traverse to objects which are listet in typestolist.
+        #       see adm.sfd.layout.browser.portlets.navigation.navtree_builder
+        if IFolder.providedBy(self.context) and self.anonymous:
+            if len(self.context.contentIds()):
+                # TODO: make configurable if listing is reversed!
+                obj = self.context.contentIds()[-1]
+                url = self.context[obj].absolute_url()
+                return self.request.response.redirect(url)
+
+        # TODO: must this be a redirect? or can folder_summary_view retrieved
+        #       somehow else - like PageTemplateView, etc.?
+        url = self.context.absolute_url() + '/folder_summary_view'
+        return self.request.response.redirect(url)
