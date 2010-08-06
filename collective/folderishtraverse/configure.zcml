@@ -1,7 +1,17 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.folderishtraverse">
 
+    <include package=".browser" />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.folderishtraverse: default"
+        directory="profiles/default"
+        description="collective.folderishtraverse default profile: Installs
+                     the view."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
 
 </configure>
