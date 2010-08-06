@@ -9,13 +9,6 @@ from AccessControl import getSecurityManager
 
 class TraverseView(BrowserView):
 
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-        if not self.__name__ == context.defaultView():
-            return
-
     @property
     def anonymous(self):
         # TODO: is there a plone view global var for that?
