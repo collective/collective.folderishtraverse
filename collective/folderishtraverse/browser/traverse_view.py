@@ -5,15 +5,15 @@
 from Products.Five.browser import BrowserView
 from plone.folder.interfaces import IFolder
 
-from AccessControl import getSecurityManager
+from zope.component import getMultiAdapter
 
 class TraverseView(BrowserView):
 
     @property
     def anonymous(self):
-        # TODO: you may better get this info from:
-        #       plone.app.layout.globals.portal.PortalState.anonymous
-        return getSecurityManager().getUser().getUserName() == 'Anonymous User'
+        portal_state = getMultiAdapter((self.context, self.request),
+                                       name=u'plone_portal_state')
+        return portal_state.anonymous()
 
     def __call__(self, *args, **kwargs):
         # TODO: only traverse to objects which are listed in typestolist.
