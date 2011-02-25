@@ -15,6 +15,7 @@ class TraverseView(BrowserView):
         # TODO: only traverse to objects which are listed in typestolist.
         #       see adm.sfd.layout.browser.portlets.navigation.navtree_builder
         ctx = self.context
+        url = None
         if IFolder.providedBy(ctx) and self.anonymous:
             con = ctx.contentIds()
             if len(con):
@@ -25,5 +26,6 @@ class TraverseView(BrowserView):
         if not url:
             # TODO: must this be a redirect? or can folder_summary_view
             #       retrieved somehow else - like PageTemplateView, etc.?
-            url = '%s/folder_summary_view' % ctx.absolute_url()
+            # TODO: make folder_listing configurable
+            url = '%s/folder_listing' % ctx.absolute_url()
         return self.request.response.redirect(url)
