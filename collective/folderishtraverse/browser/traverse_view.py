@@ -1,6 +1,7 @@
 from Products.Five.browser import BrowserView
 from plone.folder.interfaces import IFolder
-
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone import utils
 from zope.component import getMultiAdapter
 
 class TraverseView(BrowserView):
@@ -12,20 +13,38 @@ class TraverseView(BrowserView):
         return portal_state.anonymous()
 
     def __call__(self, *args, **kwargs):
-        # TODO: only traverse to objects which are listed in typestolist.
-        #       see adm.sfd.layout.browser.portlets.navigation.navtree_builder
         ctx = self.context
+        wft = getToolByName(ctx, 'portal_workflow')
+        types = utils.typesToList(ctx)
         url = None
-        if IFolder.providedBy(ctx) and self.anonymous:
-            con = ctx.contentIds()
-            if len(con):
-                # TODO: reversing the listing must be configurable!
-                obj = con[-1]
-                url = ctx[obj].absolute_url()
+        if self.anonymous:
+            def find_endpoint(obj):
+                if not IFolder.providedBy(obj): return obj
+                contents = obj.contentIds()
+                # TODO: make list reversable
+                for id in contents:
+                    child = obj[id]
 
-        if not url:
-            # TODO: must this be a redirect? or can folder_summary_view
-            #       retrieved somehow else - like PageTemplateView, etc.?
-            # TODO: make folder_listing configurable
-            url = '%s/folder_listing' % ctx.absolute_url()
+                    # only traverse to published objects
+                    try:
+                        state = wft.getInfoFor(child, 'review_state')
+                    except:
+                        state = None
+                    if not state == 'published': continue
+
+                    # only traverse to objects listed in typesToList
+                    if child.portal_type not in types: continue
+
+                    # we've found a published object, which can be used as
+                    # possible endpoint, except it has 'traverse_view' enabled
+                    obj = child
+                    if child.defaultView() == 'traverse_view':
+                        obj = find_endpoint(child)
+                    break
+                return obj
+            ctx = find_endpoint(ctx)
+        url = ctx.absolute_url()
+        if ctx.defaultView() == 'traverse_view':
+            # TODO: make fallback view configurable
+            url = '%s/folder_listing' % url
         return self.request.response.redirect(url)
