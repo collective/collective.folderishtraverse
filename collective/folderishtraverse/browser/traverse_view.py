@@ -43,8 +43,8 @@ class TraverseView(BrowserView):
                     break
                 return obj
             ctx = find_endpoint(ctx)
-        url = ctx.absolute_url()
         if ctx.defaultView() == 'traverse_view':
-            # TODO: make fallback view configurable
-            url = '%s/folder_listing' % url
-        return self.request.response.redirect(url)
+            return super(TraverseView, self).__call__(*args, **kwargs)
+        else:
+            url = ctx.absolute_url()
+            return self.request.response.redirect(url)

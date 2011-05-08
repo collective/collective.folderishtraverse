@@ -6,6 +6,7 @@
     <browser:page
         for="Products.ATContentTypes.interfaces.folder.IATFolder"
         name="traverse_view"
+        template="folder_listing.pt"
         class=".traverse_view.TraverseView"
         permission="zope2.View"
         />
