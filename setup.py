@@ -6,9 +6,8 @@ version = '1.0'
 setup(name='collective.folderishtraverse',
       version=version,
       description="Traverse to first item in folder",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://pypi.python.org/pypi?:action=list_classifiers
+      long_description=open("README.rst").read() + "\n" +
+                       open(os.path.join("docs", "HISTORY.rst")).read(),
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
@@ -24,6 +23,10 @@ setup(name='collective.folderishtraverse',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'Products.Five',
+          'plone.folder',
+          'Products.CMFCore',
+          'Products.CMFPlone',
+          'zope.component',
       ],
       )
