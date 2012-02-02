@@ -23,7 +23,6 @@ setup(name='collective.folderishtraverse',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.Five',
           'plone.folder',
           'Products.CMFCore',
           'Products.CMFPlone',
