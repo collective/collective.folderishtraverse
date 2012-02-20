@@ -10,5 +10,12 @@
         class=".traverse_view.TraverseView"
         permission="zope2.View"
         />
+    <browser:page
+        for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+        name="traverse_view"
+        template="folder_listing.pt"
+        class=".traverse_view.TraverseView"
+        permission="zope2.View"
+        />
 
 </configure>
