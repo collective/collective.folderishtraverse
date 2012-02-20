@@ -1,5 +1,6 @@
 from Products.Five.browser import BrowserView
 from plone.folder.interfaces import IFolder
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
 from zope.component import getMultiAdapter
@@ -19,7 +20,8 @@ class TraverseView(BrowserView):
         url = None
         if self.anonymous:
             def find_endpoint(obj):
-                if not IFolder.providedBy(obj): return obj
+                if not IFolder.providedBy(obj) and\
+                   not IPloneSiteRoot.providedBy(obj): return obj
                 contents = obj.contentIds()
                 # TODO: make list reversable
                 for id in contents:
