@@ -18,6 +18,7 @@ class TraverseView(BrowserView):
         wft = getToolByName(ctx, 'portal_workflow')
         types = utils.typesToList(ctx)
         url = None
+
         if self.anonymous:
             def find_endpoint(obj):
                 if not IFolder.providedBy(obj) and\
@@ -45,8 +46,10 @@ class TraverseView(BrowserView):
                     break
                 return obj
             ctx = find_endpoint(ctx)
+
+        url = ctx.absolute_url()
         if ctx.defaultView() == 'traverse_view':
-            return super(TraverseView, self).__call__(*args, **kwargs)
-        else:
-            url = ctx.absolute_url()
-            return self.request.response.redirect(url)
+            # traverse view in non-anonymous mode or if no endpoint was found
+            # should show folder_contents
+            url = '%s/folder_contents' % url
+        return self.request.response.redirect(url)
