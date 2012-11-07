@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.2dev (unreleased)
--------------------
+1.2 (2012-11-07)
+----------------
 
 - For non-anonymous users or if no endpoint was found, redirect to
   folder_contents. This view is generally nicer and more usable.
