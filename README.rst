@@ -2,12 +2,13 @@ Introduction
 ============
 
 This package provides an view which traverses to the first item found in an
-ordered container. The traversing/redirection happens only for anonymous users,
-otherwise a view based on folder_listing is returned.
+ordered container. If the default view of the item, which the traverse view is
+traversing to is also a traverse view, the traversing happens again to the next
+sub-sub-item in the sub-folder, if possible.
 
-collective.folderishtraverse provides a traverse view for Folders. If selected,
-the traversing to the first child of the folder happens. If the child's view is
-also the traverse view, the traversing happens again, if possible.
+The traversing/redirection is only done for anonymous users. For logged in
+users, the folder contents view is shown. This way, members can easily edit the
+folder without beeing redirected to another folder.
 
 collective.folderishtraverse is an alternative to a default page in Plone. The
 difference is, that the target content is shown in the navigation tree and that
