@@ -5,13 +5,13 @@
 
   <include package=".browser" />
 
+  <!-- The adapters could be optional, to enable these features -->
   <adapter
       for="plone.folder.interfaces.IFolder
            *"
       name="plone.contentmenu.actions"
       factory=".contentmenu.AlwaysActionsSubMenuItem"
       provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
-
   <adapter
       for="plone.folder.interfaces.IFolder
            *"

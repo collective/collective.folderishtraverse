@@ -30,5 +30,8 @@ setup(name='collective.folderishtraverse',
           'plone.folder',
           'zope.component',
           'zope.i18nmessageid',
+          # this could be optional, if needed
+          'plone.memoize',
+          'plone.app.contentmenu',
       ],
       )
