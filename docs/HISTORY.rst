@@ -4,7 +4,9 @@ Changelog
 1.3dev (unreleased)
 -------------------
 
-- Show the Actions and Display content-menus also in folder listings.
+- Show the Actions and Display content-menus also in folder listings. Allows
+  Action submenu items like from c.folderorder and setting the display to
+  something else than traverse_view.
   [thet]
 
 - Add statusmessage for when displaying the traverse_view for non-anonymous
