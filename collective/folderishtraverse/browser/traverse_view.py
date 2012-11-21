@@ -1,9 +1,13 @@
-from Products.Five.browser import BrowserView
-from plone.folder.interfaces import IFolder
-from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
+from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
+from plone.folder.interfaces import IFolder
 from zope.component import getMultiAdapter
+from zope.i18nmessageid import MessageFactory
+
+_ = MessageFactory('collective.folderishtraverse')
 
 class TraverseView(BrowserView):
 
@@ -49,7 +53,19 @@ class TraverseView(BrowserView):
 
         url = ctx.absolute_url()
         if ctx.defaultView() == 'traverse_view':
-            # traverse view in non-anonymous mode or if no endpoint was found
-            # should show folder_contents
-            url = '%s/folder_contents' % url
+            # TODO: check for permissions. If folder_contents cannot be shown,
+            #       fall back to folder_summary_view
+            if self.anonymous:
+                # No endpoint was found. Show the summary view.
+                url = '%s/folder_summary_view' % url
+            else:
+                # Non-anonymous view. Show folder_contents.
+                url = '%s/folder_contents' % url
+                messages = IStatusMessage(self.request)
+                messages.addStatusMessage(
+                    _("traverse_view-statusmessage",
+                      u"""This is a traverse view. Anonymous users are
+                          redirected to the first subitem in this
+                          directory."""),
+                     type="info")
         return self.request.response.redirect(url)

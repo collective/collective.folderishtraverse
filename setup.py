@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.2'
+version = '1.3'
 
 setup(name='collective.folderishtraverse',
       version=version,
@@ -23,9 +23,12 @@ setup(name='collective.folderishtraverse',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.folder',
           'Products.CMFCore',
           'Products.CMFPlone',
+          'Products.statusmessages',
+          'Zope2', # For Products.Five
+          'plone.folder',
           'zope.component',
+          'zope.i18nmessageid',
       ],
       )

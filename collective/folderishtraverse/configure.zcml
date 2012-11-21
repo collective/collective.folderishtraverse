@@ -3,15 +3,30 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.folderishtraverse">
 
-    <include package=".browser" />
+  <include package=".browser" />
 
-    <genericsetup:registerProfile
-        name="default"
-        title="collective.folderishtraverse: default"
-        directory="profiles/default"
-        description="collective.folderishtraverse default profile: Installs
-                     the view."
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-    />
+  <adapter
+      for="plone.folder.interfaces.IFolder
+           *"
+      name="plone.contentmenu.actions"
+      factory=".contentmenu.AlwaysActionsSubMenuItem"
+      provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
+  <adapter
+      for="plone.folder.interfaces.IFolder
+           *"
+      name="plone.contentmenu.display"
+      factory=".contentmenu.AlwaysDisplaySubMenuItem"
+      provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.folderishtraverse: default"
+      directory="profiles/default"
+      description="collective.folderishtraverse default profile: Installs
+                   the view."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
 
 </configure>

@@ -1,6 +1,20 @@
 Changelog
 =========
 
+1.3dev (unreleased)
+-------------------
+
+- Show the Actions and Display content-menus also in folder listings.
+  [thet]
+
+- Add statusmessage for when displaying the traverse_view for non-anonymous
+  users.
+  [thet]
+
+- When no endpoint is found, redirect to folder_summary_view for anonymous
+  users. folder_contents needs higher permissions.
+  [thet]
+
 1.2 (2012-11-07)
 ----------------
 
