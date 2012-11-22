@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3dev (unreleased)
--------------------
+1.3 (2012-11-22)
+----------------
 
 - Show the Actions and Display content-menus also in folder listings. Allows
   Action submenu items like from c.folderorder and setting the display to

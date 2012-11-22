@@ -1,13 +1,12 @@
 from setuptools import setup, find_packages
-import os
 
-version = '1.3dev'
+version = '1.3'
 
 setup(name='collective.folderishtraverse',
       version=version,
       description="Traverse to first item in folder",
       long_description=open("README.rst").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.rst")).read(),
+                       open("CHANGES.rst").read(),
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
