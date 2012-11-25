@@ -1,12 +1,22 @@
 Changelog
 =========
 
+1.4 (2012-11-23)
+----------------
+
+- Show the "Display" content-menu also in the folder contents view on the Plone
+  Site Root. The "Actions" menu is not displayed yet, since object_buttons are
+  not registered for the Plone Site Root (copy, cut, rename and delete wouldn't
+  make much sense on the portal object itself).
+  [thet]
+
+
 1.3 (2012-11-22)
 ----------------
 
-- Show the Actions and Display content-menus also in folder listings. Allows
-  Action submenu items like from c.folderorder and setting the display to
-  something else than traverse_view.
+- Show the Actions and Display content-menus also in folder content views.
+  Allows Action submenu items like from c.folderorder and setting the display
+  to something else than traverse_view.
   [thet]
 
 - Add statusmessage for when displaying the traverse_view for non-anonymous
@@ -17,6 +27,7 @@ Changelog
   users. folder_contents needs higher permissions.
   [thet]
 
+
 1.2 (2012-11-07)
 ----------------
 
@@ -24,11 +35,13 @@ Changelog
   folder_contents. This view is generally nicer and more usable.
   [thet]
 
+
 1.1 (2012-02-20)
 ----------------
 
 - Allow the traverse_view also on the Plone Site itself.
   [thet]
+
 
 1.0 (2012-02-02)
 ----------------
