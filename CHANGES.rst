@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4 (2012-11-23)
+1.4 (2012-11-25)
 ----------------
 
 - Show the "Display" content-menu also in the folder contents view on the Plone
