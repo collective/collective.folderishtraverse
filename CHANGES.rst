@@ -1,6 +1,19 @@
 Changelog
 =========
 
+
+1.5dev
+------
+
+- Add ``NON_TRAVERSE_FALLBACK_VIEW``. May be patched if fallback view for
+  ``folder_contents`` should differ from ``folder_summary_view``.
+  [rnix]
+
+- Check non-traversing fallback view against ``List folder contents``
+  permission instead of anonymous.
+  [rnix]
+
+
 1.4 (2012-11-25)
 ----------------
 

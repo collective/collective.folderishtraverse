@@ -1,13 +1,20 @@
+from zope.component import getMultiAdapter
+from zope.i18nmessageid import MessageFactory
+from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.folder.interfaces import IFolder
-from zope.component import getMultiAdapter
-from zope.i18nmessageid import MessageFactory
+
 
 _ = MessageFactory('collective.folderishtraverse')
+
+
+# XXX: maybe make this a registry entry?
+NON_TRAVERSE_FALLBACK_VIEW = 'folder_summary_view'
+
 
 class TraverseView(BrowserView):
 
@@ -16,6 +23,11 @@ class TraverseView(BrowserView):
         portal_state = getMultiAdapter((self.context, self.request),
                                        name=u'plone_portal_state')
         return portal_state.anonymous()
+
+    @property
+    def permitted(self):
+        sm = getSecurityManager()
+        return sm.checkPermission('List folder contents', self.context)
 
     def __call__(self, *args, **kwargs):
         ctx = self.context
@@ -53,13 +65,11 @@ class TraverseView(BrowserView):
 
         url = ctx.absolute_url()
         if ctx.defaultView() == 'traverse_view':
-            # TODO: check for permissions. If folder_contents cannot be shown,
-            #       fall back to folder_summary_view
-            if self.anonymous:
-                # No endpoint was found. Show the summary view.
-                url = '%s/folder_summary_view' % url
+            if not self.permitted:
+                # Not allowed to list folder contents. Show fallback.
+                url = '%s/%s' % (url, NON_TRAVERSE_FALLBACK_VIEW)
             else:
-                # Non-anonymous view. Show folder_contents.
+                # List folder contents permitted. Show folder_contents.
                 url = '%s/folder_contents' % url
                 messages = IStatusMessage(self.request)
                 messages.addStatusMessage(

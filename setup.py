@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '1.4'
+version = '1.5dev'
 
 setup(name='collective.folderishtraverse',
       version=version,
@@ -8,9 +8,9 @@ setup(name='collective.folderishtraverse',
       long_description=open("README.rst").read() + "\n" +
                        open("CHANGES.rst").read(),
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+      ],
       keywords='plone view',
       author='Johannes Raggam',
       author_email='raggam-nl@adm.at',
