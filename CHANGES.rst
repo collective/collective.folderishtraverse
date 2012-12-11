@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.5dev
-------
+1.5
+---
 
 - Add ``NON_TRAVERSE_FALLBACK_VIEW``. May be patched if fallback view for
   ``folder_contents`` should differ from ``folder_summary_view``.
