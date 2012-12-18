@@ -2,11 +2,12 @@ Changelog
 =========
 
 
-1.5.1dev
---------
+1.6
+---
 
 - Use ``zExceptions.Redirect`` instead of ``request.response.redirect`` in
-  traverse view.
+  traverse view. The Redirect exception redirects immediately instead of
+  rendering the current page and submitting a transaction.commit() first.
   [rnix]
 
 
