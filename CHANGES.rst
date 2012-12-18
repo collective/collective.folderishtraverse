@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.5.1dev
---------
+1.5.1
+-----
 
 - Use ``zExceptions.Redirect`` instead of ``request.response.redirect`` in
   traverse view.
