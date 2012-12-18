@@ -2,6 +2,14 @@ Changelog
 =========
 
 
+1.5.1dev
+--------
+
+- Use ``zExceptions.Redirect`` instead of ``request.response.redirect`` in
+  traverse view.
+  [rnix]
+
+
 1.5
 ---
 

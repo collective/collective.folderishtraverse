@@ -1,3 +1,4 @@
+from zExceptions import Redirect
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
 from AccessControl import getSecurityManager
@@ -78,4 +79,4 @@ class TraverseView(BrowserView):
                           redirected to the first subitem in this
                           directory."""),
                      type="info")
-        return self.request.response.redirect(url)
+        raise Redirect(url)
