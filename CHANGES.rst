@@ -1,5 +1,5 @@
-Changelog
-=========
+Changes
+=======
 
 
 1.6dev (unreleased)
