@@ -2,8 +2,15 @@ Changelog
 =========
 
 
-1.5.1
------
+1.6dev (unreleased)
+-------------------
+
+- Add z3c.autoinclude.plugin entry point.
+  [thet]
+
+
+1.5.1 (2012-12-18)
+------------------
 
 - Use ``zExceptions.Redirect`` instead of ``request.response.redirect`` in
   traverse view. The Redirect exception redirects immediately instead of
@@ -11,8 +18,8 @@ Changelog
   [rnix]
 
 
-1.5
----
+1.5 (2012-12-11)
+----------------
 
 - Add ``NON_TRAVERSE_FALLBACK_VIEW``. May be patched if fallback view for
   ``folder_contents`` should differ from ``folder_summary_view``.

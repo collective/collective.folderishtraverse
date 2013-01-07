@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '1.5.1'
+version = '1.6dev'
 
 setup(name='collective.folderishtraverse',
       version=version,
@@ -33,4 +33,8 @@ setup(name='collective.folderishtraverse',
           'plone.memoize',
           'plone.app.contentmenu',
       ],
+      entry_points="""
+      [z3c.autoinclude.plugin]
+      target = plone
+      """,
       )
