@@ -2,8 +2,8 @@ Changes
 =======
 
 
-1.6dev (unreleased)
--------------------
+1.6 (2013-01-14)
+----------------
 
 - Consider translation in traverse_view if LinguaPlone is installed.
   [rnix]
