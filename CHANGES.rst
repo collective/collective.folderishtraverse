@@ -5,6 +5,9 @@ Changes
 1.6dev (unreleased)
 -------------------
 
+- Consider translation in traverse_view if LinguaPlone is installed.
+  [rnix]
+
 - Add z3c.autoinclude.plugin entry point.
   [thet]
 
