@@ -2,6 +2,13 @@ Changes
 =======
 
 
+1.6.1 (2013-01-28)
+------------------
+
+- Do not try to translate object if no lang set.
+  [rnix]
+
+
 1.6 (2013-01-14)
 ----------------
 

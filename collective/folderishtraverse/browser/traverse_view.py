@@ -53,12 +53,15 @@ class TraverseView(BrowserView):
                     # try to get translation if LinguaPlone is installed, child
                     # is translatable and child language does not match lang
                     if LINGUA_PLONE_INSTALLED:
-                        if ITranslatable.providedBy(child)\
-                          and child.Language() != lang:
-                            translation = child.getTranslation(lang)
-                            if not translation:
-                                break
-                            child = translation
+                        if ITranslatable.providedBy(child):
+                            child_lang = child.Language()
+                            # child lang can be empty string, only try to
+                            # translate if explicit lang
+                            if child_lang and child_lang != lang:
+                                translation = child.getTranslation(lang)
+                                if not translation:
+                                    break
+                                child = translation
                     # only traverse to published objects
                     try:
                         state = wft.getInfoFor(child, 'review_state')
