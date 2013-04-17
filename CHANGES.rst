@@ -2,6 +2,13 @@ Changes
 =======
 
 
+1.6.2dev (unreleased)
+---------------------
+
+- Add "en" and "de" translations.
+  [thet]
+
+
 1.6.1 (2013-01-28)
 ------------------
 
