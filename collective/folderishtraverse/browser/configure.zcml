@@ -4,21 +4,21 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.folderishtraverse">
 
-    <browser:page
-        for="Products.ATContentTypes.interfaces.folder.IATFolder"
-        name="traverse_view"
-        template="folder_listing.pt"
-        class=".traverse_view.TraverseView"
-        permission="zope2.View"
-        i18n:domain="plone"
-        />
-    <browser:page
-        for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
-        name="traverse_view"
-        template="folder_listing.pt"
-        class=".traverse_view.TraverseView"
-        permission="zope2.View"
-        i18n:domain="plone"
-        />
+  <browser:page
+      for="Products.ATContentTypes.interfaces.folder.IATFolder"
+      name="traverse_view"
+      template="folder_listing.pt"
+      class=".traverse_view.TraverseView"
+      permission="zope2.View"
+      i18n:domain="plone"
+      />
+  <browser:page
+      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      name="traverse_view"
+      template="folder_listing.pt"
+      class=".traverse_view.TraverseView"
+      permission="zope2.View"
+      i18n:domain="plone"
+      />
 
 </configure>
