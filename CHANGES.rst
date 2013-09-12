@@ -2,6 +2,15 @@ Changes
 =======
 
 
+1.6.3 (unreleased)
+------------------
+
+- If no translation is found for a content item which' language doesn't match,
+  continue with the next object in the folder instead of redirecting to the
+  folder_summary_view.
+  [thet]
+
+
 1.6.2 (2013-04-23)
 ------------------
 

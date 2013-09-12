@@ -43,8 +43,8 @@ class TraverseView(BrowserView):
 
         if self.anonymous:
             def find_endpoint(obj, lang):
-                if not IFolder.providedBy(obj) \
-                  and not IPloneSiteRoot.providedBy(obj):
+                if not IFolder.providedBy(obj) and\
+                        not IPloneSiteRoot.providedBy(obj):
                     return obj
                 contents = obj.contentIds()
                 # TODO: make list reversable
@@ -60,7 +60,7 @@ class TraverseView(BrowserView):
                             if child_lang and child_lang != lang:
                                 translation = child.getTranslation(lang)
                                 if not translation:
-                                    break
+                                    continue  # ...with next obj in folder
                                 child = translation
                     # only traverse to published objects
                     try:
@@ -80,7 +80,8 @@ class TraverseView(BrowserView):
                     break
                 return obj
             plt = getToolByName(self.context, 'portal_languages')
-            ctx = find_endpoint(ctx, plt.getPreferredLanguage())
+            pref_lang = plt.getPreferredLanguage()
+            ctx = find_endpoint(ctx, pref_lang)
 
         url = ctx.absolute_url()
         if ctx.defaultView() == 'traverse_view':
