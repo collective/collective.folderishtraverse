@@ -2,7 +2,7 @@ Changes
 =======
 
 
-1.6.3 (unreleased)
+1.6.3 (2013-11-23)
 ------------------
 
 - If no translation is found for a content item which' language doesn't match,
