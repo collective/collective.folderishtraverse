@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.7 (unreleased)
+1.7 (2014-02-03)
 ----------------
 
 - Redirect not only for anonymous users but all users not having the "List
