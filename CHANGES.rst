@@ -1,6 +1,13 @@
 Changes
 =======
 
+1.7 (unreleased)
+----------------
+
+- Redirect not only for anonymous users but all users not having the "List
+  folder contents" permission on contexts with "traverse_view" enabled.
+  [thet]
+
 
 1.6.3 (2013-11-23)
 ------------------

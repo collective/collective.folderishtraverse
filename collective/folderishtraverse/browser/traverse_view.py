@@ -25,12 +25,6 @@ NON_TRAVERSE_FALLBACK_VIEW = 'folder_summary_view'
 class TraverseView(BrowserView):
 
     @property
-    def anonymous(self):
-        portal_state = getMultiAdapter((self.context, self.request),
-                                       name=u'plone_portal_state')
-        return portal_state.anonymous()
-
-    @property
     def permitted(self):
         sm = getSecurityManager()
         return sm.checkPermission('List folder contents', self.context)
@@ -41,7 +35,7 @@ class TraverseView(BrowserView):
         types = utils.typesToList(ctx)
         url = None
 
-        if self.anonymous:
+        if not self.permitted:
             def find_endpoint(obj, lang):
                 if not IFolder.providedBy(obj) and\
                         not IPloneSiteRoot.providedBy(obj):
@@ -94,8 +88,8 @@ class TraverseView(BrowserView):
                 messages = IStatusMessage(self.request)
                 messages.addStatusMessage(
                     _("traverse_view-statusmessage",
-                      u"""This is a traverse view. Anonymous users are
-                          redirected to the first subitem in this
-                          directory."""),
+                      u"""This is a traverse view. Users who are not allowed to
+                          see the folder listing are redirected to the first
+                          subitem in this directory."""),
                      type="info")
         raise Redirect(url)

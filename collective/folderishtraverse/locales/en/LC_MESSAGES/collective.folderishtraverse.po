@@ -20,4 +20,4 @@ msgstr ""
 #. Default: "This is a traverse view. Anonymous users are\n                          redirected to the first subitem in this\n                          directory."
 #: collective/folderishtraverse/browser/traverse_view.py:95
 msgid "traverse_view-statusmessage"
-msgstr "This is a traverse view. Anonymous users are redirected to the first subitem in this directory."
+msgstr "This is a traverse view. Users who are not allowed to see the folder listing are redirected to the first subitem in this directory."
