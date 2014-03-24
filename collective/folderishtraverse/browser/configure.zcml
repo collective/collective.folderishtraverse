@@ -5,7 +5,7 @@
     i18n_domain="collective.folderishtraverse">
 
   <browser:page
-      for="Products.ATContentTypes.interfaces.folder.IATFolder"
+      for="plone.folder.interfaces.IFolder"
       name="traverse_view"
       template="folder_listing.pt"
       class=".traverse_view.TraverseView"

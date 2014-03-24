@@ -1,6 +1,13 @@
 Changes
 =======
 
+1.8 (unreleased)
+----------------
+
+- Register views more generally to also support Dexterity based folderish
+  types.
+  [thet]
+
 1.7 (2014-02-03)
 ----------------
 
