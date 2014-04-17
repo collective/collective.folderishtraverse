@@ -4,6 +4,9 @@ Changes
 1.8 (unreleased)
 ----------------
 
+- Added Chinese Simplified translation.
+  [jianaijun]
+
 - Register views more generally to also support Dexterity based folderish
   types.
   [thet]
