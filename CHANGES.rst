@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.8 (unreleased)
+1.8 (2014-05-02)
 ----------------
 
 - Register views more generally to also support Dexterity based folderish
