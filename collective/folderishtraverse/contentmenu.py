@@ -1,5 +1,5 @@
 from plone.memoize.instance import memoize
-#from plone.app.content.browser.interfaces import IContentsPage
+# from plone.app.content.browser.interfaces import IContentsPage
 
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
@@ -16,9 +16,9 @@ class AlwaysActionsSubMenuItem(ActionsSubMenuItem):
     def available(self):
         actions_tool = getToolByName(self.context, 'portal_actions')
         editActions = actions_tool.listActionInfos(
-                object=self.context,
-                categories=('object_buttons',),
-                max=1)
+            object=self.context,
+            categories=('object_buttons',),
+            max=1)
         return len(editActions) > 0
 
 

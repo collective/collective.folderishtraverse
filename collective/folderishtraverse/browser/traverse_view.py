@@ -1,6 +1,3 @@
-from zExceptions import Redirect
-from zope.component import getMultiAdapter
-from zope.i18nmessageid import MessageFactory
 from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
@@ -8,6 +5,8 @@ from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.folder.interfaces import IFolder
+from zExceptions import Redirect
+from zope.i18nmessageid import MessageFactory
 try:
     from Products.LinguaPlone.interfaces import ITranslatable
     LINGUA_PLONE_INSTALLED = True
@@ -27,7 +26,7 @@ class TraverseView(BrowserView):
     @property
     def permitted(self):
         sm = getSecurityManager()
-        return sm.checkPermission('List folder contents', self.context)
+        return sm.checkPermission('Add portal content', self.context)
 
     def __call__(self, *args, **kwargs):
         ctx = self.context
@@ -91,5 +90,5 @@ class TraverseView(BrowserView):
                       u"""This is a traverse view. Users who are not allowed to
                           see the folder listing are redirected to the first
                           subitem in this directory."""),
-                     type="info")
+                    type="info")
         raise Redirect(url)
