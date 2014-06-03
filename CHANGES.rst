@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.9 (unreleased)
+1.9 (2014-06-03)
 ----------------
 
 - Change permission needed to not beeing redirected to the first content item
