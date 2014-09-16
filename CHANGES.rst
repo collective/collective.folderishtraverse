@@ -10,6 +10,9 @@ Changes
 1.9 (2014-06-03)
 ----------------
 
+- Add simplified Chinese translations.
+  [jianaijun]
+
 - Change permission needed to not beeing redirected to the first content item
   from ``List folder contents`` to ``Add portal content``. This is a better
   default, as only editors need not beeing redirected to be able to add and
