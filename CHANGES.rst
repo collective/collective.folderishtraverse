@@ -4,7 +4,13 @@ Changes
 1.10 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- On traversing, don't check for the ``published`` workflow state but for
+  content permissions.
+  [thet]
+  
+- Use the plone.app.contenttypes folder listing view as fallback view, if
+  available. 
+  [thet]
 
 
 1.9 (2014-06-03)

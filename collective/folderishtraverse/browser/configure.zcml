@@ -7,7 +7,6 @@
   <browser:page
       for="plone.folder.interfaces.IFolder"
       name="traverse_view"
-      template="folder_listing.pt"
       class=".traverse_view.TraverseView"
       permission="zope2.View"
       i18n:domain="plone"
@@ -15,7 +14,6 @@
   <browser:page
       for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
       name="traverse_view"
-      template="folder_listing.pt"
       class=".traverse_view.TraverseView"
       permission="zope2.View"
       i18n:domain="plone"

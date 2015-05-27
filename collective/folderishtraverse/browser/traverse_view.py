@@ -12,6 +12,11 @@ try:
     LINGUA_PLONE_INSTALLED = True
 except ImportError:
     LINGUA_PLONE_INSTALLED = False
+try:
+    import plone.app.contenttypes  # noqa
+    PAC_INSTALLED = True
+except ImportError:
+    PAC_INSTALLED = False
 
 
 _ = MessageFactory('collective.folderishtraverse')
@@ -19,22 +24,27 @@ _ = MessageFactory('collective.folderishtraverse')
 
 # XXX: maybe make this a registry entry?
 NON_TRAVERSE_FALLBACK_VIEW = 'folder_summary_view'
+if PAC_INSTALLED:
+    NON_TRAVERSE_FALLBACK_VIEW = '@@summary_view'
+
+EDITOR_PERMISSION = 'Add portal content'
+VIEW_PERMISSION = 'View'
 
 
 class TraverseView(BrowserView):
 
-    @property
-    def permitted(self):
+    def permitted(self, context=None, permission=EDITOR_PERMISSION):
+        if not context:
+            context = self.context
         sm = getSecurityManager()
-        return sm.checkPermission('Add portal content', self.context)
+        return sm.checkPermission(permission, context)
 
     def __call__(self, *args, **kwargs):
         ctx = self.context
-        wft = getToolByName(ctx, 'portal_workflow')
         types = utils.typesToList(ctx)
         url = None
 
-        if not self.permitted:
+        if not self.permitted():
             def find_endpoint(obj, lang):
                 if not IFolder.providedBy(obj) and\
                         not IPloneSiteRoot.providedBy(obj):
@@ -55,12 +65,12 @@ class TraverseView(BrowserView):
                                 if not translation:
                                     continue  # ...with next obj in folder
                                 child = translation
-                    # only traverse to published objects
-                    try:
-                        state = wft.getInfoFor(child, 'review_state')
-                    except:
-                        state = None
-                    if not state == 'published':
+                    # only traverse to allowed objects
+                    allowed = self.permitted(
+                        context=child,
+                        permission=VIEW_PERMISSION
+                    )
+                    if not allowed:
                         continue
                     # only traverse to objects listed in typesToList
                     if child.portal_type not in types:
@@ -78,7 +88,7 @@ class TraverseView(BrowserView):
 
         url = ctx.absolute_url()
         if ctx.defaultView() == 'traverse_view':
-            if not self.permitted:
+            if not self.permitted(context=ctx):
                 # Not allowed to list folder contents. Show fallback.
                 url = '%s/%s' % (url, NON_TRAVERSE_FALLBACK_VIEW)
             else:
