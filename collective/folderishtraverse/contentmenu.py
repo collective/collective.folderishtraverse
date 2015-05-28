@@ -1,11 +1,8 @@
-from plone.memoize.instance import memoize
-# from plone.app.content.browser.interfaces import IContentsPage
-
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
-
 from plone.app.contentmenu.menu import ActionsSubMenuItem
 from plone.app.contentmenu.menu import DisplaySubMenuItem
+from plone.memoize.instance import memoize
 
 
 class AlwaysActionsSubMenuItem(ActionsSubMenuItem):
