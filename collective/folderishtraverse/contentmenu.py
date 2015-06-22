@@ -14,7 +14,7 @@ class AlwaysActionsSubMenuItem(ActionsSubMenuItem):
     """Show the Actions contentmenu also in folder_contents views.
     """
 
-    @volatile.cache(_cache_key)
+    @volatile.cache(_cache_key, volatile.store_on_context)
     def available(self):
         actions_tool = getToolByName(self.context, 'portal_actions')
         editActions = actions_tool.listActionInfos(
@@ -28,7 +28,7 @@ class AlwaysDisplaySubMenuItem(DisplaySubMenuItem):
     """Show the Display contentmenu also in folder_contents views.
     """
 
-    @volatile.cache(_cache_key)
+    @volatile.cache(_cache_key, volatile.store_on_context)
     def disabled(self):
         context = self.context
         if self.context_state.is_default_page():
