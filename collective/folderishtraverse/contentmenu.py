@@ -2,14 +2,19 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
 from plone.app.contentmenu.menu import ActionsSubMenuItem
 from plone.app.contentmenu.menu import DisplaySubMenuItem
-from plone.memoize.instance import memoize
+from plone.memoize import volatile
+import time
+
+
+def _cache_key(method, self):
+    return time.time() // (60 * 60)  # cache for 60 min
 
 
 class AlwaysActionsSubMenuItem(ActionsSubMenuItem):
     """Show the Actions contentmenu also in folder_contents views.
     """
 
-    @memoize
+    @volatile(_cache_key)
     def available(self):
         actions_tool = getToolByName(self.context, 'portal_actions')
         editActions = actions_tool.listActionInfos(
@@ -23,14 +28,12 @@ class AlwaysDisplaySubMenuItem(DisplaySubMenuItem):
     """Show the Display contentmenu also in folder_contents views.
     """
 
-    @memoize
+    @volatile(_cache_key)
     def disabled(self):
         context = self.context
         if self.context_state.is_default_page():
             context = utils.parent(context)
-        if not getattr(context, 'isPrincipiaFolderish', False):
-            return False
-        elif 'index_html' not in context.objectIds():
-            return False
-        else:
-            return True
+        return (
+            getattr(context, 'isPrincipiaFolderish', False)
+            and 'index_html' in context.objectIds()
+        )

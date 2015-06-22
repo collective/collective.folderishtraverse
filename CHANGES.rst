@@ -4,6 +4,13 @@ Changes
 1.10 (unreleased)
 -----------------
 
+- normalize non-readable boolean expression.
+  [jensens]
+
+- Dont cache on instance to reduce write on reads. 
+  Cache volatile for 60min instead.
+  [jensens]
+
 - On traversing, don't check for the ``published`` workflow state but for
   content permissions.
   [thet]
