@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.10 (unreleased)
+1.10 (2015-07-15)
 -----------------
 
 - normalize non-readable boolean expression.
