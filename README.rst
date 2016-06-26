@@ -9,7 +9,7 @@ sub-sub-item in the sub-folder, if possible.
 The traversing/redirection is only done for users who are not allowed to see
 the folder listing of the current context (usally anonymous users and normal
 members). For users with higher permissions, a folder contents view is shown.
-This way, members can easily edit the folder without beeing redirected to
+This way, members can easily edit the folder without being redirected to
 another folder.
 
 collective.folderishtraverse is an alternative to a default page in Plone. The
