@@ -4,6 +4,9 @@ Changes
 1.2 (unreleased)
 -----------------
 
+- Improve readability of traverse_view
+  [jensens]
+
 - Add browser-layer
   [jensens]
 
