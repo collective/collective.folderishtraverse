@@ -1,0 +1,22 @@
+<configure
+    i18n_domain="collective.folderishtraverse"
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n">
+  <browser:page
+      class=".traverse_view.TraverseView"
+      for="plone.folder.interfaces.IFolder"
+      i18n:domain="plone"
+      layer="collective.folderishtraverse.interfaces.ICollectiveFolderishtraverseLayer"
+      name="traverse_view"
+      permission="zope2.View"
+  />
+  <browser:page
+      class=".traverse_view.TraverseView"
+      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      i18n:domain="plone"
+      layer="collective.folderishtraverse.interfaces.ICollectiveFolderishtraverseLayer"
+      name="traverse_view"
+      permission="zope2.View"
+  />
+</configure>

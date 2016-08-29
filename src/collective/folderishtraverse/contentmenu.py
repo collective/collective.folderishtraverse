@@ -1,8 +1,10 @@
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import utils
+# -*- coding: utf-8 -*-
 from plone.app.contentmenu.menu import ActionsSubMenuItem
 from plone.app.contentmenu.menu import DisplaySubMenuItem
 from plone.memoize import volatile
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone import utils
+
 import time
 
 
@@ -34,6 +36,6 @@ class AlwaysDisplaySubMenuItem(DisplaySubMenuItem):
         if self.context_state.is_default_page():
             context = utils.parent(context)
         return (
-            getattr(context, 'isPrincipiaFolderish', False)
-            and 'index_html' in context.objectIds()
+            getattr(context, 'isPrincipiaFolderish', False) and
+            'index_html' in context.objectIds()
         )
