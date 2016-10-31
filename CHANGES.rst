@@ -1,11 +1,20 @@
 Changes
 =======
 
-1.11 (unreleased)
+1.2 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Improve readability of traverse_view
+  [jensens]
 
+- Add browser-layer
+  [jensens]
+
+- Add basic testing.
+  [jensens]
+
+- Add integrated buildout for easier development.
+  [jensens]
 
 1.10 (2015-07-15)
 -----------------
@@ -13,16 +22,16 @@ Changes
 - normalize non-readable boolean expression.
   [jensens]
 
-- Dont cache on instance to reduce write on reads. 
+- Dont cache on instance to reduce write on reads.
   Cache volatile for 60min instead.
   [jensens]
 
 - On traversing, don't check for the ``published`` workflow state but for
   content permissions.
   [thet]
-  
+
 - Use the plone.app.contenttypes folder listing view as fallback view, if
-  available. 
+  available.
   [thet]
 
 
