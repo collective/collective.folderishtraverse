@@ -1,8 +1,11 @@
 Changes
 =======
 
-1.2 (unreleased)
+2.0 (unreleased)
 -----------------
+
+- Support for Plone 5 plone.app.contenttypes folder.
+  [agitator]
 
 - Improve readability of traverse_view
   [jensens]

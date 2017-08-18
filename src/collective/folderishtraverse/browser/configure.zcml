@@ -13,6 +13,14 @@
   />
   <browser:page
       class=".traverse_view.TraverseView"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      i18n:domain="plone"
+      layer="collective.folderishtraverse.interfaces.ICollectiveFolderishtraverseLayer"
+      name="traverse_view"
+      permission="zope2.View"
+  />
+  <browser:page
+      class=".traverse_view.TraverseView"
       for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
       i18n:domain="plone"
       layer="collective.folderishtraverse.interfaces.ICollectiveFolderishtraverseLayer"
