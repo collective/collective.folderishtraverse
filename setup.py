@@ -15,6 +15,7 @@ setup(
     ),
     classifiers=[
         "Framework :: Plone",
+        "Framework :: Plone :: 5.1",
         "Programming Language :: Python",
     ],
     keywords='plone view',
