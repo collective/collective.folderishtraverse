@@ -20,7 +20,7 @@ setup(
     keywords='plone view',
     author='Johannes Raggam',
     author_email='raggam-nl@adm.at',
-    url='http://github.com/thet/collective.forlderishtraverse',
+    url='http://github.com/collective/collective.forlderishtraverse',
     license='GPL',
     packages=find_packages('src', exclude=['ez_setup']),
     namespace_packages=['collective'],
