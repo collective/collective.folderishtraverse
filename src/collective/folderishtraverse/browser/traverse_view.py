@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
 from plone.folder.interfaces import IFolder
 from Products.CMFCore.utils import getToolByName

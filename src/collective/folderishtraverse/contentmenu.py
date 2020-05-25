@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.app.contentmenu.menu import ActionsSubMenuItem
 from plone.app.contentmenu.menu import DisplaySubMenuItem
 from plone.memoize import volatile

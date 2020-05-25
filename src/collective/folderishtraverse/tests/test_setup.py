@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
 """Setup tests for this package."""
-from collective.folderishtraverse.testing import COLLECTIVE_FOLDERISHTRAVERSE_INTEGRATION_TESTING  # noqa
+from collective.folderishtraverse.testing import (
+    COLLECTIVE_FOLDERISHTRAVERSE_INTEGRATION_TESTING,
+)  # noqa
 from plone import api
 
 import unittest
