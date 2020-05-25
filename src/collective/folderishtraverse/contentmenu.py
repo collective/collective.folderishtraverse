@@ -18,11 +18,10 @@ class AlwaysActionsSubMenuItem(ActionsSubMenuItem):
 
     @volatile.cache(_cache_key, volatile.store_on_context)
     def available(self):
-        actions_tool = getToolByName(self.context, 'portal_actions')
+        actions_tool = getToolByName(self.context, "portal_actions")
         editActions = actions_tool.listActionInfos(
-            object=self.context,
-            categories=('object_buttons',),
-            max=1)
+            object=self.context, categories=("object_buttons",), max=1
+        )
         return len(editActions) > 0
 
 
@@ -36,6 +35,6 @@ class AlwaysDisplaySubMenuItem(DisplaySubMenuItem):
         if self.context_state.is_default_page():
             context = utils.parent(context)
         return (
-            getattr(context, 'isPrincipiaFolderish', False) and
-            'index_html' in context.objectIds()
+            getattr(context, "isPrincipiaFolderish", False)
+            and "index_html" in context.objectIds()
         )

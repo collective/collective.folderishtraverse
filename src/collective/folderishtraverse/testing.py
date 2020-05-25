@@ -21,7 +21,7 @@ class CollectiveFolderishtraverseLayer(PloneSandboxLayer):
         self.loadZCML(package=collective.folderishtraverse)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.folderishtraverse:default')
+        applyProfile(portal, "collective.folderishtraverse:default")
 
 
 COLLECTIVE_FOLDERISHTRAVERSE_FIXTURE = CollectiveFolderishtraverseLayer()
@@ -29,13 +29,13 @@ COLLECTIVE_FOLDERISHTRAVERSE_FIXTURE = CollectiveFolderishtraverseLayer()
 
 COLLECTIVE_FOLDERISHTRAVERSE_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FOLDERISHTRAVERSE_FIXTURE,),
-    name='CollectiveFolderishtraverseLayer:IntegrationTesting'
+    name="CollectiveFolderishtraverseLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_FOLDERISHTRAVERSE_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FOLDERISHTRAVERSE_FIXTURE,),
-    name='CollectiveFolderishtraverseLayer:FunctionalTesting'
+    name="CollectiveFolderishtraverseLayer:FunctionalTesting",
 )
 
 
@@ -43,7 +43,7 @@ COLLECTIVE_FOLDERISHTRAVERSE_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         COLLECTIVE_FOLDERISHTRAVERSE_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveFolderishtraverseLayer:AcceptanceTesting'
+    name="CollectiveFolderishtraverseLayer:AcceptanceTesting",
 )
