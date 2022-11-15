@@ -1,4 +1,5 @@
 graft src/collective
 graft docs
 include *.rst
+exclude *.sh
 global-exclude *.pyc *pyo *~ *.mo
