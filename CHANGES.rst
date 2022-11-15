@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.2 (unreleased)
+1.11 (2022-11-15)
 -----------------
 
 - Improve readability of traverse_view
