@@ -33,6 +33,11 @@ EDITOR_PERMISSION = 'Add portal content'
 VIEW_PERMISSION = 'View'
 
 
+# Let editors also traverse to the traversee and do not just show the folder contents view.
+# See below in code, where it is used.
+EDITOR_TRAVERSE = True
+
+
 class TraverseView(BrowserView):
 
     def permitted(self, context=None, permission=EDITOR_PERMISSION):
@@ -83,15 +88,28 @@ class TraverseView(BrowserView):
     def __call__(self, *args, **kwargs):
         ctx = self.context
         url = None
-        if not self.permitted():
+
+        if EDITOR_TRAVERSE or not self.permitted():
+            # Traverse to the traversee.
+            # This is the standard case.
+            # I think the other case should in fact be gone, but then we might
+            # loose this nice secuirty guard: If the new context is still a
+            # traverse_view the traversal might have gone wrong and we use the
+            # folder summary view on the starting context.
+            # So the code block further down checking for the new context still
+            # being a "traverse_view" is cool and should stay.
             types_to_list = utils.typesToList(ctx)
             plt = getToolByName(self.context, 'portal_languages')
             pref_lang = plt.getPreferredLanguage()
             ctx = self.find_endpoint(ctx, pref_lang, types_to_list)
         url = ctx.absolute_url()
+
+        # What? The new context still having traverse_view enabled? Shouldn't happen.
+        # Except this `EDITOR_TRAVERSE` flag set to `False`.
         if ctx.defaultView() == 'traverse_view':
             if not self.permitted(context=ctx):
-                # Not allowed to list folder contents. Show fallback.
+                # What? I cannot edit the traversee?
+                # OK, let"s use the fallback view.
                 url = '%s/%s' % (url, NON_TRAVERSE_FALLBACK_VIEW)
             else:
                 # List folder contents permitted. Show folder_contents.
