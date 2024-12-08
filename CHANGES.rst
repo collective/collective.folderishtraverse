@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.2 (unreleased)
+1.2 (2024-12-08)
 ----------------
 
 - When redirecting, set a 302 status header and the redirection url.
