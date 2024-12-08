@@ -3,7 +3,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = "1.12.dev0"
+version = "1.2.dev0"
 
 setup(
     name="collective.folderishtraverse",
@@ -11,32 +11,36 @@ setup(
     description="Traverse to first item in folder",
     long_description=(open("README.rst").read() + "\n" + open("CHANGES.rst").read()),
     classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Web Environment",
         "Framework :: Plone",
+        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python",
-        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "Programming Language :: Python",
     ],
     keywords="plone view",
     author="Johannes Raggam",
-    author_email="raggam-nl@adm.at",
+    author_email="thetetet@gmail.com",
     url="http://github.com/collective/collective.forlderishtraverse",
     license="GPL",
-    packages=find_packages("src", exclude=["ez_setup"]),
+    packages=find_packages("src"),
     namespace_packages=["collective"],
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        "plone.app.contentmenu",
         "plone.folder",
+        "plone.memoize",
         "Products.CMFCore",
         "Products.CMFPlone",
         "Products.statusmessages",
         "setuptools",
         "zope.component",
         "zope.i18nmessageid",
-        "Zope2",  # For Products.Five
-        # this could be optional, if needed
-        "plone.app.contentmenu",
-        "plone.memoize",
     ],
     extras_require={
         "test": [
