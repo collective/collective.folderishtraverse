@@ -103,4 +103,7 @@ class TraverseView(BrowserView):
                           see the folder listing are redirected to the first
                           subitem in this directory."""),
                     type="info")
-        raise Redirect(url)
+
+        self.request.response.setHeader("Location", url)
+        self.request.response.setStatus(302)
+        return Redirect(url)

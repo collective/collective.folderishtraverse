@@ -1,10 +1,13 @@
 Changes
 =======
 
-1.12 (unreleased)
------------------
+1.2 (unreleased)
+----------------
 
-- Nothing changed yet.
+- When redirecting, set a 302 status header and the redirection url.
+  This makes the redirection not only a standard one, but allows also
+  redirections on AJAX requests.
+  [thet]
 
 
 1.11 (2022-11-15)
