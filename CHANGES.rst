@@ -1,7 +1,7 @@
 Changes
 =======
 
-2.0 (unreleased)
+2.0 (2024-12-08)
 ----------------
 
 - Let editors also traverse to the right context.
