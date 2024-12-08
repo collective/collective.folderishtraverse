@@ -1,10 +1,26 @@
 Changes
 =======
 
-1.3 (unreleased)
+2.0 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Let editors also traverse to the right context.
+
+  There is a new "EDITOR_TRAVERSE" option, set per default to "True".
+  When "True", editors are also redirected to the first accessible content item
+  in a folder. If set to "False", editors are redirected to the folder contents
+  view.
+
+  I think showing the folder contents view is confusing and not necessary
+  anymore, therefore this breaking change.
+
+  In the next major release this feature will be removed alltogether.
+
+  Currently the "EDITOR_TRAVERSE" option is a module constant in
+  "collective.folderishtraverse.browser.traverse_view" - if needed this can be
+  changed to a registry entry.
+
+  [thet]
 
 
 1.2 (2024-12-08)
