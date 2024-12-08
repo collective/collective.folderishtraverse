@@ -19,7 +19,6 @@ setup(
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python",
-        "Programming Language :: Python",
     ],
     keywords="plone view",
     author="Johannes Raggam",
